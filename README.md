@@ -194,8 +194,9 @@ Get the public IP of the service and open it in your browser.
 kubectl delete -f kubernetes/deployment.yml
 kubectl delete -f kubernetes/service.yml
 
-# Delete EKS cluster
-eksctl delete cluster --name my-eks-cluster
+# Delete your resources from AWS Managmenet Console
+- Delete your EKS cluster from EKS Console
+- Delete your ECR repository from ECR Console
 ```
 
 ## Troubleshooting
