@@ -6,14 +6,14 @@ This guide provides step-by-step instructions for deploying applications on Amaz
 ## Project Structure
 ```
 .
-├── app/
+├── 
 │   ├── app.py               # Python application
 │   ├── Dockerfile          # Docker configuration
 │   └── requirements.txt    # Python dependencies
-├── kubernetes/
+├── 
 │   ├── deployment.yml      # Kubernetes deployment configuration
 │   └── service.yml         # Kubernetes service configuration
-└── cluster/
+└── 
     └── cluster.yml         # EKS cluster configuration
 ```
 
@@ -107,19 +107,21 @@ For other operating systems, visit:
 
 #### Create cluster configuration
 ```bash
-vi cluster/cluster.yml
+vi cluster.yml
 ```
 
 #### Deploy cluster
 ```bash
 # Create cluster
-eksctl create cluster -f cluster/cluster.yml
+eksctl create cluster -f cluster.yml
 
 # Verify cluster creation
-eksctl get cluster --region us-east-1
+Replace `<region>` with your actual region.
+eksctl get cluster --region <region>
 
 # Update kubeconfig
-aws eks --region us-east-1 update-kubeconfig --name my-eks-cluster
+Replace `<region>` with your actual region.
+aws eks --region <region> update-kubeconfig --name my-eks-cluster
 
 # Verify nodes
 kubectl get nodes
@@ -130,17 +132,17 @@ kubectl get nodes
 #### Create Application Files
 
 ```bash
-vi app/app.py
+vi app.py
 ```
 #### Create requirements.txt
 ```bash
-vi app/requirements.txt
+vi requirements.txt
 ```
 
 
 #### Create Dockerfile
 ```bash
-vi app/Dockerfile
+vi Dockerfile
 ```
 
 ### 4. Build and Push Docker Image
@@ -191,8 +193,8 @@ Get the public IP of the service and open it in your browser.
 
 ```bash
 # Delete Kubernetes resources
-kubectl delete -f kubernetes/deployment.yml
-kubectl delete -f kubernetes/service.yml
+kubectl delete -f deployment.yml
+kubectl delete -f service.yml
 
 # Delete your resources from AWS Managmenet Console
 - Delete your EKS cluster from EKS Console
